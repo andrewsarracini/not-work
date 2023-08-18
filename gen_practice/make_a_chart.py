@@ -32,4 +32,9 @@ def animal_fact_generator():
     # print(response['choices'][0]['text'])
     return
 
+def chart_generator():
+
+    return
+
+
 animal_fact_generator()
