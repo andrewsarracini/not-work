@@ -1,6 +1,5 @@
 
-
-key = ""
+import key
 
 
 # Importing the libraries
