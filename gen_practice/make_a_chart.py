@@ -16,30 +16,37 @@ def animal_fact_generator():
     # Prompt the user for an animal to generate a fact from
     animal = input("What animal would you like to learn about? ")
 
-    # validate the input is a valid animal
-    animal_validation_string = "is " + animal + \
-        " a valid animal? respond with either 'yes' or 'no'"
-    check = openai.Completion.create(
-        engine=engine, prompt=animal_validation_string, max_tokens=1)
-
-    # if it's not a valid animal, return
-    if check['choices'][0]['text'] == "no":
-        print("Sorry, that's not a valid animal")
-        return
+    # Validate the animal
+    # This is ia placeholder and is impossible to reach right now
+    if not animal_validator(animal):
+        print("Please enter a valid animal")
+        animal_fact_generator()
+        return  
 
     # Prompt the user for a fact about the animal
-    prompt = "Generate a random fun fact about" + \
-        animal + "which is in the form of a statistic'?"
-    response = openai.Completion.create(
-        engine=engine, prompt=prompt, max_tokens=defualt_tokens, temperature=0.2)
+    animal = input('What animal would you like to learn about?')
+    for response in openai.Completion.create(
+        model="text-davinci-003",
+        prompt=f"Lifespan of {animal}",
+        max_tokens=30,
+        temperature=0,
+        stream=True
+    ):
+        print(response['choices'][0]['text'])
+
+
+
     print(response)
     # print(response['choices'][0]['text'])
     return
 
 
 def chart_generator():
-
     return
+
+
+def animal_validator(response):
+    return True
 
 
 animal_fact_generator()
