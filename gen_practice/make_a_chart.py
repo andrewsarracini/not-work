@@ -24,7 +24,6 @@ def animal_fact_generator():
         return  
 
     # Prompt the user for a fact about the animal
-    animal = input('What animal would you like to learn about?')
     for response in openai.Completion.create(
         model="text-davinci-003",
         prompt=f"Lifespan of {animal}",
