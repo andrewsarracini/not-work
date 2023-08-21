@@ -1,5 +1,5 @@
 import openai
-key = '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'
+key = ''
 
 animal = input('What animal would you like to learn about?')
 
