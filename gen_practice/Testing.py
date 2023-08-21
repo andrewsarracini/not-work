@@ -1,17 +1,17 @@
-key = "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"
+import openai
+import os
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+# openai.api_key = os.environ['OPENAI_API_KEY']
 
 
+animal = input('What animal would you like to learn about?')
 
-# Importing the libraries
-import openai as oi
-
-#Move This later
-oi.api_key = key
-#print(oi.Model.list())
-
-prompt = "Who wrote the book 'The Fault in Our Stars'?"
-response = oi.Completion.create(engine="davinci", prompt=prompt, max_tokens=5)
-print(response)
-# print(response['choices'][0]['text'])
-
-
+for chunk in openai.Completion.create(
+    model="text-davinci-003",
+    prompt=f"Lifespan of {animal}",
+    max_tokens=30,
+    temperature=0,
+    stream=True
+):
+    print(chunk['choices'][0]['text'])
