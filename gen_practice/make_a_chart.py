@@ -1,7 +1,7 @@
 
 # from key import key1
 import openai as oi
-key1 = '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'
+key1 = ''
 
 
 # Importing the libraries
